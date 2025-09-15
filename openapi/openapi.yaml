@@ -4,9 +4,9 @@ info:
   title: Pulse LMS 
   termsOfService: https://example.com/terms/
   contact:
-    name: Contact our support
-    email: contact@example.com
-    url: http://example.com/contact
+    name: Suresh Kumar Mukhiya
+    email: itsmeskm99@gmail.com
+    url: https://www.skmukhiya.com.np 
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -54,6 +54,7 @@ tags:
     description: "Example operations for retrieving information."
   - name: Tag
     description: "This is a tag description."
+
 x-tagGroups:
   - name: General
     tags:
