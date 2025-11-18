@@ -1,0 +1,28 @@
+get:
+  tags: [Content]
+  summary: Get word
+  description: "Get a single word by id."
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: path
+      name: wordId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: "Word."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Word.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+    '404':
+      $ref: '../../components/responses/Problem.yaml'
+
+

@@ -1,0 +1,51 @@
+get:
+  tags: [Admin Category Groups]
+  summary: List category groups
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  responses:
+    '200':
+      description: "Category groups."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/CategoryGroup.yaml'
+post:
+  tags: [Admin Category Groups]
+  summary: Create category group
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required: [slug, name]
+          properties:
+            slug:
+              type: string
+            name:
+              type: string
+            description:
+              type: string
+            sortOrder:
+              type: integer
+  responses:
+    '201':
+      description: "Created."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/CategoryGroup.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+

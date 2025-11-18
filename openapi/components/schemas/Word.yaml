@@ -1,0 +1,49 @@
+type: object
+required:
+  - id
+  - term
+  - level
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "Unique word identifier."
+  term:
+    type: string
+    minLength: 1
+    description: "The vocabulary term."
+    example: hei
+  translation:
+    type: string
+    description: "Primary translation for the learner's base language."
+    example: hello
+  phonetics:
+    type: string
+    description: "Phonetic transcription."
+    example: /hæɪ/
+  level:
+    $ref: './Level.yaml'
+  categoryIds:
+    type: array
+    description: "Categories this word belongs to."
+    items:
+      type: string
+      format: uuid
+  frequencyRank:
+    type: integer
+    minimum: 1
+    description: "Lower is more frequent."
+    example: 120
+  exampleSentences:
+    type: array
+    description: "Example sentences using the word."
+    items:
+      type: string
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
+
+

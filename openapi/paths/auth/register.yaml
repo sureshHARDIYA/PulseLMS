@@ -1,0 +1,29 @@
+post:
+  tags: [Auth]
+  summary: Register
+  description: "Register a new user with email and password."
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/AuthRegisterRequest.yaml'
+  responses:
+   '201':
+      description: "User created and signed in."
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user, tokens]
+            properties:
+              user:
+                $ref: '../../components/schemas/UserProfile.yaml'
+              tokens:
+                $ref: '../../components/schemas/AuthTokens.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '409':
+      $ref: '../../components/responses/Problem.yaml'
+
+

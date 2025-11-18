@@ -1,0 +1,32 @@
+get:
+  tags: [Quizzes]
+  summary: List quizzes
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: query
+      name: level
+      schema:
+        $ref: '../../components/schemas/Level.yaml'
+    - in: query
+      name: categoryId
+      schema:
+        type: string
+        format: uuid
+    - in: query
+      name: type
+      schema:
+        type: string
+        enum: [words, sentences, mixed]
+  responses:
+    '200':
+      description: "Quizzes."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/Quiz.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+

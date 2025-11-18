@@ -1,0 +1,18 @@
+type: object
+required:
+  - planId
+  - status
+properties:
+  planId:
+    type: string
+    format: uuid
+  status:
+    type: string
+    enum: [active, canceled, past_due, trialing, inactive]
+  currentPeriodEnd:
+    type: string
+    format: date-time
+  cancelAtPeriodEnd:
+    type: boolean
+
+

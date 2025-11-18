@@ -1,0 +1,22 @@
+type: object
+required:
+  - term
+  - level
+properties:
+  term:
+    type: string
+  translation:
+    type: string
+  phonetics:
+    type: string
+  level:
+    $ref: './Level.yaml'
+  categoryIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+  frequencyRank:
+    type: integer
+
+

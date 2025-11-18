@@ -1,0 +1,64 @@
+get:
+  tags: [Admin Users]
+  summary: List users
+  description: "Admin-only. List users with filters."
+  security:
+    - bearerAuth: []
+  x-roles:
+    - admin
+  parameters:
+    - in: query
+      name: q
+      schema:
+        type: string
+    - in: query
+      name: role
+      schema:
+        type: string
+        enum: [user, admin]
+    - in: query
+      name: status
+      schema:
+        type: string
+        enum: [active, banned, inactive]
+  responses:
+    '200':
+      description: "Users."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/UserProfile.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+post:
+  tags: [Admin Users]
+  summary: Create or invite user
+  description: "Admin-only. Create a user with password or send an invite magic link."
+  security:
+    - bearerAuth: []
+  x-roles:
+    - admin
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/AdminUserCreateRequest.yaml'
+  responses:
+    '201':
+      description: "User created or invited."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UserProfile.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+

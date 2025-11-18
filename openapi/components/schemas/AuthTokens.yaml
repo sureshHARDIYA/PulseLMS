@@ -1,0 +1,16 @@
+type: object
+required:
+  - accessToken
+  - refreshToken
+  - expiresIn
+properties:
+  accessToken:
+    type: string
+    description: "JWT access token."
+  refreshToken:
+    type: string
+  expiresIn:
+    type: integer
+    description: "Access token TTL in seconds."
+
+

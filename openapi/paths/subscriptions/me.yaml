@@ -1,0 +1,45 @@
+get:
+  tags: [Subscriptions]
+  summary: Get my subscription
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: "User subscription."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UserSubscription.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+post:
+  tags: [Subscriptions]
+  summary: Change my subscription
+  description: "Subscribe or change plan."
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required: [planId]
+          properties:
+            planId:
+              type: string
+              format: uuid
+            cancelAtPeriodEnd:
+              type: boolean
+  responses:
+    '200':
+      description: "Updated subscription."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UserSubscription.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+

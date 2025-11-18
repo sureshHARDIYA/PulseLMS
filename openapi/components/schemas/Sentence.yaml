@@ -1,0 +1,38 @@
+type: object
+required:
+  - id
+  - text
+  - level
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "Unique sentence identifier."
+  text:
+    type: string
+    minLength: 1
+    description: "Sentence in the target language."
+  translation:
+    type: string
+    description: "Translation in learner's base language."
+  level:
+    $ref: './Level.yaml'
+  categoryIds:
+    type: array
+    description: "Categories this sentence belongs to."
+    items:
+      type: string
+      format: uuid
+  relatedWordIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
+
+

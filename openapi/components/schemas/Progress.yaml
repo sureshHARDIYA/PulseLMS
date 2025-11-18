@@ -1,0 +1,44 @@
+type: object
+description: "Aggregated user progress."
+properties:
+  level:
+    $ref: './Level.yaml'
+  wordProgress:
+    type: array
+    items:
+      type: object
+      required: [wordId, correctCount, wrongCount]
+      properties:
+        wordId:
+          type: string
+          format: uuid
+        correctCount:
+          type: integer
+          minimum: 0
+        wrongCount:
+          type: integer
+          minimum: 0
+        mastery:
+          type: number
+          minimum: 0
+          maximum: 100
+        lastReviewedAt:
+          type: string
+          format: date-time
+  categoryProgress:
+    type: array
+    items:
+      type: object
+      required: [categoryId, completed]
+      properties:
+        categoryId:
+          type: string
+          format: uuid
+        completed:
+          type: boolean
+        progressPercent:
+          type: number
+          minimum: 0
+          maximum: 100
+
+

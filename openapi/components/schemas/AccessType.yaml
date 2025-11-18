@@ -1,0 +1,8 @@
+type: string
+description: "Access classification for content."
+enum:
+  - free
+  - paid
+example: free
+
+

@@ -1,0 +1,81 @@
+get:
+  tags: [Admin Users]
+  summary: Get user
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  parameters:
+    - in: path
+      name: userId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: "User profile."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UserProfile.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+    '404':
+      $ref: '../../components/responses/Problem.yaml'
+patch:
+  tags: [Admin Users]
+  summary: Update user
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  parameters:
+    - in: path
+      name: userId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/AdminUserUpdate.yaml'
+  responses:
+    '200':
+      description: "Updated user."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UserProfile.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+delete:
+  tags: [Admin Users]
+  summary: Delete user
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  parameters:
+    - in: path
+      name: userId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '204':
+      description: "Deleted."
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+    '404':
+      $ref: '../../components/responses/Problem.yaml'
+

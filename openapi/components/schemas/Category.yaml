@@ -1,0 +1,46 @@
+type: object
+required:
+  - id
+  - slug
+  - name
+  - level
+  - access
+properties:
+  id:
+    description: "Unique category identifier."
+    type: string
+    format: uuid
+  slug:
+    description: "URL-friendly identifier."
+    type: string
+    pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+    example: daily-conversation
+  name:
+    description: "Category display name."
+    type: string
+    minLength: 1
+    example: Daily Conversation
+  description:
+    description: "Optional description of the category."
+    type: string
+    maxLength: 512
+  groupId:
+    description: "Optional grouping for navigation."
+    type: string
+    format: uuid
+  level:
+    $ref: './Level.yaml'
+  access:
+    $ref: './AccessType.yaml'
+  isHighFrequency:
+    description: "Indicates if this is a high-frequency category."
+    type: boolean
+    default: false
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
+
+

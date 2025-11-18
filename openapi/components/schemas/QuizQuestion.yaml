@@ -1,0 +1,42 @@
+type: object
+required: [id, prompt, type]
+properties:
+  id:
+    type: string
+    format: uuid
+  type:
+    type: string
+    enum: [multiple_choice, translate, fill_in_blank]
+  prompt:
+    type: string
+  options:
+    description: "For multiple_choice questions. Options visible to learners."
+    type: array
+    items:
+      $ref: './QuizQuestionOption.yaml'
+  multipleCorrect:
+    description: "If true, multiple options may be correct."
+    type: boolean
+    default: false
+  acceptableAnswers:
+    description: "For translate/fill_in_blank. Acceptable answers (server-side only)."
+    type: array
+    items:
+      type: string
+    writeOnly: true
+  sourceLanguage:
+    description: "For translate; e.g., en."
+    type: string
+    example: en
+  targetLanguage:
+    description: "For translate; e.g., no."
+    type: string
+    example: no
+  relatedWordId:
+    type: string
+    format: uuid
+  relatedSentenceId:
+    type: string
+    format: uuid
+
+

@@ -1,0 +1,19 @@
+type: object
+properties:
+  slug:
+    type: string
+  name:
+    type: string
+  description:
+    type: string
+  groupId:
+    type: string
+    format: uuid
+  level:
+    $ref: './Level.yaml'
+  access:
+    $ref: './AccessType.yaml'
+  isHighFrequency:
+    type: boolean
+
+

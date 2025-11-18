@@ -1,0 +1,57 @@
+patch:
+  tags: [Admin Words]
+  summary: Update word
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  parameters:
+    - in: path
+      name: wordId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/WordUpdate.yaml'
+  responses:
+    '200':
+      description: "Updated."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Word.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+    '404':
+      $ref: '../../components/responses/Problem.yaml'
+delete:
+  tags: [Admin Words]
+  summary: Delete word
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  parameters:
+    - in: path
+      name: wordId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '204':
+      description: "Deleted."
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+    '404':
+      $ref: '../../components/responses/Problem.yaml'
+

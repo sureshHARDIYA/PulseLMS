@@ -1,0 +1,14 @@
+get:
+  tags: [Subscriptions]
+  summary: List subscription plans
+  responses:
+    '200':
+      description: "Available plans."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/SubscriptionPlan.yaml'
+
+

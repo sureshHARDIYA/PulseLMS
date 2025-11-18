@@ -1,0 +1,51 @@
+get:
+  tags: [Progress]
+  summary: Get my progress
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: "Aggregated user progress."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Progress.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+patch:
+  tags: [Progress]
+  summary: Update progress
+  description: "Update progress for a specific word or category."
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          oneOf:
+            - required: [wordId, result]
+            - required: [categoryId, progressPercent]
+          properties:
+            wordId:
+              type: string
+              format: uuid
+            result:
+              type: string
+              enum: [correct, wrong]
+            categoryId:
+              type: string
+              format: uuid
+            progressPercent:
+              type: number
+              minimum: 0
+              maximum: 100
+  responses:
+    '204':
+      description: "Progress updated."
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+

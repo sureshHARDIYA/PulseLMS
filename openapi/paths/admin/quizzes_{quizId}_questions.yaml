@@ -1,0 +1,59 @@
+get:
+  tags: [Admin Quizzes]
+  summary: List quiz questions
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  parameters:
+    - in: path
+      name: quizId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: "Questions for the quiz."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/QuizQuestion.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+post:
+  tags: [Admin Quizzes]
+  summary: Create quiz question
+  security:
+    - bearerAuth: []
+  x-roles: [admin]
+  parameters:
+    - in: path
+      name: quizId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/QuizQuestionCreate.yaml'
+  responses:
+    '201':
+      description: "Created."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/QuizQuestion.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+

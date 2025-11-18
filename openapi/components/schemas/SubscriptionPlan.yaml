@@ -1,0 +1,31 @@
+type: object
+required:
+  - id
+  - name
+  - price
+  - currency
+  - interval
+properties:
+  id:
+    type: string
+    format: uuid
+  name:
+    type: string
+    example: Premium
+  description:
+    type: string
+  price:
+    type: number
+    format: float
+    minimum: 0
+  currency:
+    type: string
+    example: USD
+  interval:
+    type: string
+    enum: [month, year]
+  trialDays:
+    type: integer
+    minimum: 0
+
+

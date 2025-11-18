@@ -1,0 +1,13 @@
+type: object
+required:
+  - token
+  - newPassword
+properties:
+  token:
+    type: string
+  newPassword:
+    type: string
+    format: password
+    minLength: 8
+
+

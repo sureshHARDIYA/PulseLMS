@@ -1,0 +1,27 @@
+post:
+  tags: [Auth]
+  summary: Refresh tokens
+  description: "Exchange a refresh token for new access and refresh tokens."
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required: [refreshToken]
+          properties:
+            refreshToken:
+              type: string
+  responses:
+    '200':
+      description: "New tokens issued."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/AuthTokens.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+
+

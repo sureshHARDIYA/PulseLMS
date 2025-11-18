@@ -1,0 +1,28 @@
+post:
+  tags: [Quizzes]
+  summary: Start quiz
+  description: "Start a quiz attempt and receive generated questions."
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: path
+      name: quizId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '201':
+      description: "Attempt started."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/QuizStartResponse.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+    '404':
+      $ref: '../../components/responses/Problem.yaml'
+
+

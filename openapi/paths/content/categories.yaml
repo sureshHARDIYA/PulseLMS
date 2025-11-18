@@ -1,0 +1,37 @@
+get:
+  tags: [Content]
+  summary: List categories
+  description: "List vocabulary categories filtered by level/access."
+  x-allowed-hosts:
+    - your-frontend.example
+  parameters:
+    - in: query
+      name: level
+      schema:
+        $ref: '../../components/schemas/Level.yaml'
+    - in: query
+      name: groupId
+      schema:
+        type: string
+        format: uuid
+    - in: query
+      name: access
+      schema:
+        $ref: '../../components/schemas/AccessType.yaml'
+    - in: query
+      name: isHighFrequency
+      schema:
+        type: boolean
+  responses:
+    '200':
+      description: "Categories."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/Category.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+
+

@@ -1,0 +1,35 @@
+post:
+  tags: [Quizzes]
+  summary: Submit quiz
+  description: "Submit answers for the ongoing quiz attempt."
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: path
+      name: quizId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/QuizSubmissionRequest.yaml'
+  responses:
+    '200':
+      description: "Result."
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/QuizResult.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+    '403':
+      $ref: '../../components/responses/Problem.yaml'
+    '404':
+      $ref: '../../components/responses/Problem.yaml'
+

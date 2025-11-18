@@ -1,0 +1,29 @@
+type: object
+required: [attemptId, answers]
+properties:
+  attemptId:
+    type: string
+    format: uuid
+  answers:
+    type: array
+    items:
+      type: object
+      required: [questionId]
+      properties:
+        questionId:
+          type: string
+          format: uuid
+        choiceIds:
+          description: "For multiple_choice."
+          type: array
+          items:
+            type: string
+            format: uuid
+        answerText:
+          description: "For translate/fill_in_blank."
+          type: string
+      oneOf:
+        - required: [choiceIds]
+        - required: [answerText]
+
+

@@ -11,11 +11,10 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
-    altText: OpenAPI example logo
+    url: '/docs/pulselms-logo.svg'
+    altText: PulseLMS
   description: >
-    This is an **example** API to demonstrate features of the OpenAPI
-    specification.
+    API specification for Pulse LMS..
 
     # Introduction
 
@@ -23,47 +22,52 @@ info:
     describing your API in [OpenAPI/Swagger
     format](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md).
 
-    It also demonstrates features of the
-    [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool
-    and the [Redoc](https://github.com/Redocly/Redoc) documentation engine. Beyond
-    the standard OpenAPI syntax, we use a few 
-    [vendor extensions](https://github.com/Redocly/Redoc/blob/main/docs/redoc-vendor-extensions.md).
-
-    # OpenAPI Specification
-
-    The goal of The OpenAPI Specification is to define a standard, language-agnostic interface to REST APIs which
-    allows both humans and computers to discover and understand the capabilities
-    of the service without access to source
-    code, documentation, or through network traffic inspection. When properly
-    defined via OpenAPI, a consumer can 
-    understand and interact with the remote service with a minimal amount of
-    implementation logic. Similar to what
-    interfaces have done for lower-level programming, OpenAPI removes the
-    guesswork in calling the service.
 externalDocs:
   description: "Find out how to create a GitHub repo for your OpenAPI definition."
   url: 'https://github.com/Redocly/create-openapi-repo'
 tags:
-  - name: Echo
-    description: "Example echo operations."
-  - name: User
-    description: "Example actions on user accounts."
-  - name: Admin
-    description: "Example operations reserved for administrators."
-  - name: Info
-    description: "Example operations for retrieving information."
-  - name: Tag
-    description: "This is a tag description."
+  - name: Auth
+    description: "Authentication and password reset."
+  - name: Content
+    description: "Levels, categories, words, and sentences."
+  - name: Quizzes
+    description: "Practice quizzes based on words and categories."
+  - name: Profile
+    description: "User profile management."
+  - name: Progress
+    description: "User learning progress."
+  - name: Subscriptions
+    description: "Subscription plans and user subscription."
+  - name: Admin Users
+    description: "Admin: manage users."
+  - name: Admin Categories
+    description: "Admin: manage categories."
+  - name: Admin Words
+    description: "Admin: manage words."
+  - name: Admin Sentences
+    description: "Admin: manage sentences."
+  - name: Admin Quizzes
+    description: "Admin: manage quizzes and questions."
+  - name: Admin Category Groups
+    description: "Admin: manage category groups."
 
 x-tagGroups:
-  - name: General
+  - name: Application
     tags:
-      - User
-      - Info
-      - Echo
+      - Auth
+      - Content
+      - Quizzes
+      - Profile
+      - Progress
+      - Subscriptions
   - name: Administration
     tags:
-      - Admin
+      - Admin Users
+      - Admin Categories
+      - Admin Words
+      - Admin Sentences
+      - Admin Quizzes
+      - Admin Category Groups
 servers:
   - url: https://{tenant}/api/v1
     variables:
@@ -72,52 +76,81 @@ servers:
         description: Your tenant id
   - url: https://example.com/api/v1
 paths:
-  '/users/{username}':
-    $ref: 'paths/users_{username}.yaml'
-  '/user':
-    $ref: 'paths/user.yaml'
-  '/user/list':
-    $ref: 'paths/user-status.yaml'
-  /pathItem:
-    $ref: paths/pathItem.yaml
-  /pathItemWithExamples:
-    $ref: paths/pathItemWithExamples.yaml
-  '/echo':
-    $ref: 'paths/echo.yaml'
+  /auth/register:
+    $ref: 'paths/auth/register.yaml'
+  /auth/login:
+    $ref: 'paths/auth/login.yaml'
+  /auth/refresh:
+    $ref: 'paths/auth/refresh.yaml'
+  /auth/request-password-reset:
+    $ref: 'paths/auth/request-password-reset.yaml'
+  /auth/reset-password:
+    $ref: 'paths/auth/reset-password.yaml'
+  /auth/passwordless/start:
+    $ref: 'paths/auth/passwordless_start.yaml'
+  /auth/passwordless/verify:
+    $ref: 'paths/auth/passwordless_verify.yaml'
+  /levels:
+    $ref: 'paths/content/levels.yaml'
+  /categories:
+    $ref: 'paths/content/categories.yaml'
+  /words:
+    $ref: 'paths/content/words.yaml'
+  '/words/{wordId}':
+    $ref: 'paths/content/words_{wordId}.yaml'
+  /sentences:
+    $ref: 'paths/content/sentences.yaml'
+  '/sentences/{sentenceId}':
+    $ref: 'paths/content/sentences_{sentenceId}.yaml'
+  /me:
+    $ref: 'paths/profile/me.yaml'
+  /progress/me:
+    $ref: 'paths/progress/me.yaml'
+  /subscriptions/plans:
+    $ref: 'paths/subscriptions/plans.yaml'
+  /subscriptions/me:
+    $ref: 'paths/subscriptions/me.yaml'
+  /category-groups:
+    $ref: 'paths/content/category-groups.yaml'
+  /admin/users:
+    $ref: 'paths/admin/users.yaml'
+  '/admin/users/{userId}':
+    $ref: 'paths/admin/users_{userId}.yaml'
+  /admin/categories:
+    $ref: 'paths/admin/categories.yaml'
+  '/admin/categories/{categoryId}':
+    $ref: 'paths/admin/categories_{categoryId}.yaml'
+  /admin/category-groups:
+    $ref: 'paths/admin/category-groups.yaml'
+  '/admin/category-groups/{groupId}':
+    $ref: 'paths/admin/category-groups_{groupId}.yaml'
+  /admin/words:
+    $ref: 'paths/admin/words.yaml'
+  '/admin/words/{wordId}':
+    $ref: 'paths/admin/words_{wordId}.yaml'
+  /admin/sentences:
+    $ref: 'paths/admin/sentences.yaml'
+  '/admin/sentences/{sentenceId}':
+    $ref: 'paths/admin/sentences_{sentenceId}.yaml'
+  /admin/quizzes:
+    $ref: 'paths/admin/quizzes.yaml'
+  '/admin/quizzes/{quizId}':
+    $ref: 'paths/admin/quizzes_{quizId}.yaml'
+  '/admin/quizzes/{quizId}/questions':
+    $ref: 'paths/admin/quizzes_{quizId}_questions.yaml'
+  '/admin/quizzes/{quizId}/questions/{questionId}':
+    $ref: 'paths/admin/quizzes_{quizId}_questions_{questionId}.yaml'
+  /quizzes:
+    $ref: 'paths/quizzes/quizzes.yaml'
+  '/quizzes/{quizId}':
+    $ref: 'paths/quizzes/quizzes_{quizId}.yaml'
+  '/quizzes/{quizId}/start':
+    $ref: 'paths/quizzes/quizzes_{quizId}_start.yaml'
+  '/quizzes/{quizId}/submit':
+    $ref: 'paths/quizzes/quizzes_{quizId}_submit.yaml'
 components:
   securitySchemes:
-    main_auth:
-      description: "Example description text of the OAuth2 scheme."
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: http://example.com/api/oauth/dialog
-          scopes:
-            'read:users': read user info
-            'write:users': modify or remove users
-    api_key:
-      description: "Example description text of the API key scheme."
-      type: apiKey
-      in: header
-      name: api_key
-    basic_auth:
+    bearerAuth:
       type: http
-      scheme: basic
-webhooks:
-  userInfo:
-    post:
-      summary: New user webhook
-      description: "Information about a new user in the system."
-      operationId: userInfo
-      tags:
-        - Info
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: 'components/schemas/User.yaml'
-      responses:
-        '200':
-          description: "Successfully retrieved information about a new user."
-      security:
-        - api_key: []
+      scheme: bearer
+      bearerFormat: JWT

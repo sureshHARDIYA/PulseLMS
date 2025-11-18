@@ -1,0 +1,57 @@
+type: object
+required: [type, prompt]
+properties:
+  type:
+    type: string
+    enum: [multiple_choice, translate, fill_in_blank]
+  prompt:
+    type: string
+  relatedWordId:
+    type: string
+    format: uuid
+  relatedSentenceId:
+    type: string
+    format: uuid
+allOf:
+  - oneOf:
+      - title: Multiple choice authoring
+        properties:
+          options:
+            type: array
+            minItems: 2
+            items:
+              type: object
+              required: [text]
+              properties:
+                text:
+                  type: string
+                isCorrect:
+                  type: boolean
+            description: "Provide options; mark one or more as correct with isCorrect."
+          multipleCorrect:
+            type: boolean
+        required: [options]
+      - title: Translate authoring
+        properties:
+          sourceLanguage:
+            type: string
+            example: en
+          targetLanguage:
+            type: string
+            example: no
+          acceptableAnswers:
+            type: array
+            minItems: 1
+            items:
+              type: string
+        required: [sourceLanguage, targetLanguage, acceptableAnswers]
+      - title: Fill-in-the-blank authoring
+        properties:
+          acceptableAnswers:
+            type: array
+            minItems: 1
+            items:
+              type: string
+        required: [acceptableAnswers]
+
+

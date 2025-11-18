@@ -1,0 +1,29 @@
+post:
+  tags: [Auth]
+  summary: Login
+  description: "Login with email and password."
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/AuthLoginRequest.yaml'
+  responses:
+    '200':
+      description: "Authenticated."
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user, tokens]
+            properties:
+              user:
+                $ref: '../../components/schemas/UserProfile.yaml'
+              tokens:
+                $ref: '../../components/schemas/AuthTokens.yaml'
+    '400':
+      $ref: '../../components/responses/Problem.yaml'
+    '401':
+      $ref: '../../components/responses/Problem.yaml'
+
+

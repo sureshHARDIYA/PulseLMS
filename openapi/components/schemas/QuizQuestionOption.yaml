@@ -1,0 +1,16 @@
+type: object
+required: [id, text]
+properties:
+  id:
+    type: string
+    format: uuid
+  text:
+    type: string
+  isCorrect:
+    description: "Write-only. Marks the correct option for authoring."
+    type: boolean
+    writeOnly: true
+  explanation:
+    type: string
+
+

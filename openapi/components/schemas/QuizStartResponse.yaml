@@ -1,0 +1,15 @@
+type: object
+required: [attemptId, quizId, questions]
+properties:
+  attemptId:
+    type: string
+    format: uuid
+  quizId:
+    type: string
+    format: uuid
+  questions:
+    type: array
+    items:
+      $ref: './QuizQuestion.yaml'
+
+

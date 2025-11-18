@@ -1,0 +1,32 @@
+type: object
+required: [attemptId, quizId, score, correctCount, wrongCount]
+properties:
+  attemptId:
+    type: string
+    format: uuid
+  quizId:
+    type: string
+    format: uuid
+  score:
+    type: number
+    minimum: 0
+    maximum: 100
+  correctCount:
+    type: integer
+    minimum: 0
+  wrongCount:
+    type: integer
+    minimum: 0
+  breakdown:
+    type: array
+    items:
+      type: object
+      required: [questionId, correct]
+      properties:
+        questionId:
+          type: string
+          format: uuid
+        correct:
+          type: boolean
+
+

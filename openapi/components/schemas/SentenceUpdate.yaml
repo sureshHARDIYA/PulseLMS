@@ -1,0 +1,15 @@
+type: object
+properties:
+  text:
+    type: string
+  translation:
+    type: string
+  level:
+    $ref: './Level.yaml'
+  categoryIds:
+    type: array
+    items:
+      type: string
+      format: uuid
+
+

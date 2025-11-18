@@ -1,0 +1,17 @@
+get:
+  tags: [Content]
+  summary: List levels
+  description: "List supported CEFR levels."
+  x-allowed-hosts:
+    - your-frontend.example
+  responses:
+    '200':
+      description: "Levels."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/Level.yaml'
+
+

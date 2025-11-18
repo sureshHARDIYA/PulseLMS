@@ -1,0 +1,22 @@
+type: object
+required: [email]
+properties:
+  email:
+    type: string
+    format: email
+  name:
+    type: string
+  role:
+    type: string
+    enum: [user, admin]
+    default: user
+  sendInvite:
+    type: boolean
+    description: "If true, sends a magic-link invite instead of setting a password."
+    default: true
+  password:
+    type: string
+    format: password
+    description: "Optional if sendInvite=true."
+
+
