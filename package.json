@@ -2,7 +2,7 @@
   "name": "acme-api",
   "version": "1.0.0",
   "dependencies": {
-    "@redocly/cli": "2.1.3"
+    "@redocly/cli": "1.34.5"
   },
   "private": true,
   "scripts": {
@@ -10,5 +10,6 @@
     "build": "redocly build-docs openapi/openapi.yaml --output=dist && cp dist docs/index.html",
     "build:docs": "redocly build-docs --output=site",
     "test": "redocly lint"
-  }
+  },
+  "packageManager": "pnpm@10.15.0"
 }
