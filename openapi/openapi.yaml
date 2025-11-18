@@ -2,16 +2,16 @@ openapi: 3.1.0
 info:
   version: 1.0.0
   title: Pulse LMS 
-  termsOfService: https://example.com/terms/
+  termsOfService: https://pulse-lms.netlify.app/
   contact:
     name: Suresh Kumar Mukhiya
     email: itsmeskm99@gmail.com
-    url: https://www.skmukhiya.com.np 
+    url: https://pulse-lms.netlify.app/ 
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   x-logo:
-    url: '/docs/pulselms-logo.svg'
+    url: '/pulselms-logo.svg'
     altText: PulseLMS
   description: >
     API specification for Pulse LMS..
